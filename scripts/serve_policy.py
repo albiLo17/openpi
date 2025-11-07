@@ -18,6 +18,7 @@ class EnvMode(enum.Enum):
     ALOHA_SIM = "aloha_sim"
     DROID = "droid"
     LIBERO = "libero"
+    KTH = "kth"
 
 
 @dataclasses.dataclass
@@ -57,6 +58,10 @@ class Args:
 
 # Default checkpoints that should be used for each environment.
 DEFAULT_CHECKPOINT: dict[EnvMode, Checkpoint] = {
+    EnvMode.KTH: Checkpoint(
+        config="pi05_kth_pen_finetune",
+        dir="checkpoints/pi05_kth_pen_low_mem_finetune/pi05_kth_pen_low_mem_finetune/29999",  # TODO: Change to the actual checkpoint path
+    ),
     EnvMode.ALOHA: Checkpoint(
         config="pi05_aloha",
         dir="gs://openpi-assets/checkpoints/pi05_base",
